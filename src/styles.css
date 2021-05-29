@@ -19,3 +19,7 @@ form.normal-form{
 .controles-containter > * {
     width: 100%;
 }
+
+.add-bottom-padding{
+    padding-bottom: 10px;
+}

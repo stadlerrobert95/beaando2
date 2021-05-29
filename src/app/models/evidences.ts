@@ -1,6 +1,5 @@
 export interface Evidences{
     resourceType: "Evidence",
-
     url?: string,
     identifier?: Identifier[],
     version?: string,
