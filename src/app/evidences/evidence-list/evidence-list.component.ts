@@ -5,6 +5,7 @@ import { EvidencesService } from 'src/app/shared/evidences.service';
 import { map } from 'rxjs/operators';
 import { EvidenceComponent } from '../evidence/evidence.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { NotificationService } from 'src/app/shared/notification.service';
 
 
 
@@ -17,7 +18,9 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 export class EvidenceListComponent implements OnInit {
 
   constructor(private service: EvidencesService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private notificationService: NotificationService) { }
+
   evidenceArray = new MatTableDataSource<EvidencesSimplified>();
 
   displayedColumns: string[] = ['identifier', 'name', 'title', 'status', 'date', 'effectivePeriod', 'exposureBackground', 'actions'];
@@ -34,8 +37,9 @@ export class EvidenceListComponent implements OnInit {
     return docData.map(evidence => {
         let data = evidence.payload.doc.data() as EvidencesSimplified;
         return {...data,
-          date: (data as {date: any}).date.toDate(),
-        effectivePeriod: (data as {date: any}).date.toDate()}
+          $key: evidence.payload.doc.id,
+          date: (data as {date: any}).date?.toDate(),
+        effectivePeriod: (data as {date: any}).date?.toDate()}
       }
     )
   })).subscribe(docData =>{
@@ -60,5 +64,14 @@ export class EvidenceListComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     this.dialog.open(EvidenceComponent, dialogConfig);
+  }
+
+  onDelete($key:string){
+    if(confirm('Want do delete this record?')){
+    this.service.deleteEvidence($key);
+    this.notificationService.warn('Deleted sucessfully');
+    }
+
+  
   }
 }

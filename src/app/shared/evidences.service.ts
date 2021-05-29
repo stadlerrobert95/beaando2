@@ -48,15 +48,21 @@ export class EvidencesService {
   }
 
   updateEvidence(evidence: EvidencesSimplified){
+    console.log(this.firebase.collection("evidences"));
+    console.log(evidence.$key);
     
+    
+    return this.firebase.collection("evidences").doc(evidence.$key).set(evidence);
+
   }
 
   deleteEvidence($key:string){
+    return this.firebase.collection("evidences").doc($key).delete()
   }
 
   populateForm(evidence:EvidencesSimplified){
     this.form.setValue({
-      $key: 1,
+      $key: evidence.$key,
       identifier: evidence.identifier,
       name: evidence.name,
       title: evidence.title,

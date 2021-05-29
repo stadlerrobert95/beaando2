@@ -11,4 +11,8 @@ export class NotificationService {
   success(msg: string){
       this.snackBar.open(msg, '');
   }
+
+  warn(msg: string){
+    this.snackBar.open(msg, '');
+}
 }

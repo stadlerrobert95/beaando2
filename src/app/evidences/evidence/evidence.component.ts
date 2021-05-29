@@ -25,6 +25,7 @@ export class EvidenceComponent implements OnInit {
     {id: 2, value: "active"}, 
     {id: 3, value:"retired"}, 
     {id: 4, value:"unknown"}];
+    
   constructor(public service: EvidencesService, 
     private firestore:AngularFirestore, 
     private notificationService: NotificationService,
@@ -46,13 +47,14 @@ export class EvidenceComponent implements OnInit {
   onSubmit(){
     console.log("Submitted");
       let data = this.service.form.value;
-      
-      this.service.instertEvidence(data).then(
-        res=>{          
-        this.service.form.reset();
-        this.service.initializeFormGroup();
-        this.notificationService.success('Submitted successfully')})
-        this.onClose();
+      if (!this.service.form.get('$key')?.value)
+        this.service.instertEvidence(this.service.form.value)
+      else 
+        this.service.updateEvidence(this.service.form.value)
+      this.service.form.reset();
+      this.service.initializeFormGroup();
+      this.notificationService.success('Submitted successfully')
+      this.onClose();
   }
 
   onClose(){
