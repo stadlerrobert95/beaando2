@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Evidences } from 'src/app/models/evidences';
 import { EvidencesService } from 'src/app/shared/evidences.service';
-import { map } from 'rxjs/operators'
+import { map } from 'rxjs/operators';
+
+
 
 
 @Component({
@@ -15,7 +17,7 @@ export class EvidenceListComponent implements OnInit {
   constructor(private service: EvidencesService) { }
   evidenceArray = new MatTableDataSource();
 
-  displayedColumns: string[] = ['identifier', 'name', 'title', 'status', 'date', 'effectivePeriod', 'exposureBackground'];
+  displayedColumns: string[] = ['identifier', 'name', 'title', 'status', 'date', 'effectivePeriod', 'exposureBackground', 'actions'];
   
   ngOnInit(): void {
     setTimeout(()=>console.log(this.evidenceArray),2000);
@@ -27,11 +29,15 @@ export class EvidenceListComponent implements OnInit {
   .pipe(
     map(docData => { 
     return docData.map(evidence => {
-        return evidence.payload.doc.data();
+        let data = evidence.payload.doc.data() as Object;
+        return {...data, 
+          date: (data as {date: any}).date.toDate(),
+          effectivePeriod: (data as {date: any}).date.toDate()}
       }
     )
   })).subscribe(docData =>{
     this.evidenceArray.data = docData
   })
+
 
 }
