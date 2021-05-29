@@ -53,7 +53,8 @@ import { MatNativeDateModule, MatOption, MatOptionModule } from '@angular/materi
     MatNativeDateModule,
     MatButtonModule,
     MatSnackBarModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
   ],
   exports: [
     MatToolbarModule,
@@ -67,7 +68,8 @@ import { MatNativeDateModule, MatOption, MatOptionModule } from '@angular/materi
     MatDatepickerModule,
     MatButtonModule,
     MatSnackBarModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule { }

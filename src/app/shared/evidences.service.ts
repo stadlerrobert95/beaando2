@@ -48,9 +48,22 @@ export class EvidencesService {
   }
 
   updateEvidence(evidence: EvidencesSimplified){
-
+    
   }
 
   deleteEvidence($key:string){
   }
+
+  populateForm(evidence:EvidencesSimplified){
+    this.form.setValue({
+      $key: 1,
+      identifier: evidence.identifier,
+      name: evidence.name,
+      title: evidence.title,
+      status: evidence.status,
+      date: evidence.date,
+      effectivePeriod: evidence.effectivePeriod,
+      exposureBackground: evidence.exposureBackground
+  })}
+
 }

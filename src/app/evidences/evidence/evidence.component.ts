@@ -7,6 +7,7 @@ import { NotificationService} from '../../shared/notification.service';
 import { FormBuilder, FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from '../../app.component';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-evidence',
@@ -24,26 +25,40 @@ export class EvidenceComponent implements OnInit {
     {id: 2, value: "active"}, 
     {id: 3, value:"retired"}, 
     {id: 4, value:"unknown"}];
-  constructor(public service: EvidencesService, private firestore:AngularFirestore, private notificationService: NotificationService){ }
+  constructor(public service: EvidencesService, 
+    private firestore:AngularFirestore, 
+    private notificationService: NotificationService,
+    public dialogRef: MatDialogRef<EvidenceComponent>){ }
 
   ngOnInit(): void {
-    this.onClear();
+    this.service.form.reset();
+    this.service.initializeFormGroup();
     this.service.getEvidences();
   }
 
   onClear(){
-    this.service.form.reset();
+    console.log("Cleared");
     this.service.initializeFormGroup();
+    this.service.form.reset();
   }
 
 
   onSubmit(){
+    console.log("Submitted");
       let data = this.service.form.value;
       
       this.service.instertEvidence(data).then(
         res=>{          
-        this.onClear;
+        this.service.form.reset();
+        this.service.initializeFormGroup();
         this.notificationService.success('Submitted successfully')})
+        this.onClose();
+  }
+
+  onClose(){
+    this.service.form.reset();
+    this.service.initializeFormGroup();
+    this.dialogRef.close();
   }
 }
 

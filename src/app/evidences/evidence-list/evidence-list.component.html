@@ -1,3 +1,8 @@
+    <div class="toolbar2">
+        <button mat-raised-button (click)="onCreate()">
+            <mat-icon>add</mat-icon>
+            Add new evidence</button>
+    </div>
     <table mat-table [dataSource]="evidenceArray" class="mat-elevation-z8">
         <ng-container matColumnDef="identifier">
             <th mat-header-cell *matHeaderCellDef>Identifier</th>
@@ -30,8 +35,8 @@
         <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let row">
-                <button mat-icon-button><mat-icon>launch</mat-icon></button>
-                <button mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
+                <button appHighlight mat-icon-button (click)="onEdit(row)"><mat-icon>launch</mat-icon></button>
+                <button appHighlight mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
             </td>
         </ng-container>
         <ng-container matColumnDef="loading">

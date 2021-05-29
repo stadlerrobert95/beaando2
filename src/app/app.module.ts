@@ -11,6 +11,7 @@ import { EvidencesComponent } from './evidences/evidences.component';
 import { MaterialModule } from './material/material.module';
 import { CleartextComponent } from './cleartext/cleartext.component';
 import { EvidenceListComponent } from './evidences/evidence-list/evidence-list.component';
+import { HighlightDirective } from './directives/highlight.directive';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { EvidenceListComponent } from './evidences/evidence-list/evidence-list.c
     EvidencesComponent,
     CleartextComponent,
     EvidenceListComponent,
+    HighlightDirective,
     
   ],
   imports: [
@@ -32,6 +34,7 @@ import { EvidenceListComponent } from './evidences/evidence-list/evidence-list.c
     AngularFireDatabaseModule
   ],
   providers: [EvidencesService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[EvidenceComponent]
 })
 export class AppModule { }
