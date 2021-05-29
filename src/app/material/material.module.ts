@@ -45,7 +45,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatGridListModule,
     MatFormFieldModule,
     MatInputModule,
-    MatRadioModule
+    MatRadioModule,
+    MatIconModule
   
   ],
   exports: [
@@ -53,7 +54,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatGridListModule,
     MatFormFieldModule,
     MatInputModule,
-    MatRadioModule
+    MatRadioModule,
+    MatIconModule
   ]
 })
 export class MaterialModule { }

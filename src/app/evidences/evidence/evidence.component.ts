@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { EvidencesService } from "../../shared/evidences.service";
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Evidences } from '../../models/evidences';
@@ -15,6 +15,9 @@ import { AppComponent } from '../../app.component';
   
 })
 export class EvidenceComponent implements OnInit {
+  
+  @Input() identifier = '';
+
   selectedStatus!: string;
   statuses = ["draft", "active", "retired", "unknown"];
   constructor(public service: EvidencesService, private firestore:AngularFirestore){ }

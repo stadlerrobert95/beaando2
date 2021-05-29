@@ -3,9 +3,11 @@
     <mat-grid-tile>
         <div class="controles-containter">
             <input type="hidden" formControlName="$key">
-            <mat-form-field>
+            <!--<mat-form-field>
                 <input formControlName="identifier" matInput placeholder="Identifier">
-            </mat-form-field>
+            </mat-form-field>-->
+            <app-cleartext placeholder="Identifier" [value]="identifier"></app-cleartext>
+            <app-cleartext [placeholder]="identifier"></app-cleartext>
             <mat-form-field>
                 <input formControlName="name" matInput placeholder="EvidenceName">
             </mat-form-field>

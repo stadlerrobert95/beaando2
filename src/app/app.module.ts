@@ -8,6 +8,7 @@ import { EvidenceComponent } from './evidences/evidence/evidence.component';
 import { EvidencesService } from './shared/evidences.service';
 import { EvidencesComponent } from './evidences/evidences.component';
 import { MaterialModule } from './material/material.module';
+import { CleartextComponent } from './cleartext/cleartext.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { MaterialModule } from './material/material.module';
     AppComponent,
     EvidenceComponent,
     EvidencesComponent,
+    CleartextComponent,
     
   ],
   imports: [
