@@ -1,0 +1,41 @@
+<form [formGroup]="service.form" class="normal-form">
+<mat-grid-list cols="2" rowHeight="700px">
+    <mat-grid-tile>
+        <div class="controles-containter">
+            <input type="hidden" formControlName="$key">
+            <mat-form-field>
+                <input formControlName="identifier" matInput placeholder="Identifier">
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="name" matInput placeholder="EvidenceName">
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="title" matInput placeholder="Title">
+            </mat-form-field>
+            <mat-raido-group formControlName="status">
+                <mat-radio-button [value]='1'>Draft</mat-radio-button>
+                <mat-radio-button [value]='2'>Active</mat-radio-button>
+                <mat-radio-button [value]='3'>Retired</mat-radio-button>
+                <mat-radio-button [value]='4'>Unknown</mat-radio-button>
+            </mat-raido-group>
+            <mat-form-field>
+                <input formControlName="date" matInput placeholder="Date">
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="effectivePeriod" matInput placeholder="EffectivePeriod">
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="exposureBackground" matInput placeholder="ExposureBackground">
+            </mat-form-field>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="controles-container">
+            <div class="add-bottom-padding">
+
+            </div>
+        </div>
+    </mat-grid-tile>
+
+</mat-grid-list>
+</form>
