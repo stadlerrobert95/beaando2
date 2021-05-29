@@ -1,6 +1,6 @@
-<mat-form-field class="example-form-field">
+<mat-form-field class="controles-containter">
     <mat-label >{{ placeholder }}</mat-label>
-    <input matInput type="text" [(ngModel)]="value">
+    <input [formControlName]="formNameVariable" matInput type="text" [(ngModel)]="value">
     <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
       <mat-icon>close</mat-icon>
     </button>

@@ -1,42 +1,58 @@
-<form [formGroup]="service.form" class="normal-form">
-<mat-grid-list cols="2" rowHeight="700px">
+<form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+<mat-grid-list cols="2" rowHeight="800px">
     <mat-grid-tile>
         <div class="controles-containter">
             <input type="hidden" formControlName="$key">
-            <!--<mat-form-field>
+            <mat-form-field>
                 <input formControlName="identifier" matInput placeholder="Identifier">
-            </mat-form-field>-->
-            <app-cleartext placeholder="Identifier" [value]="identifier"></app-cleartext>
-            <app-cleartext [placeholder]="identifier"></app-cleartext>
+            </mat-form-field>
+            <!--<app-cleartext placeholder="Identifier" [value]="identifier"></app-cleartext>
+            <app-cleartext [placeholder]="identifier"></app-cleartext>-->
             <mat-form-field>
                 <input formControlName="name" matInput placeholder="EvidenceName">
+                <mat-error *ngIf="service.form.controls['name'].errors?.required">This field is required!</mat-error>
+                <mat-error *ngIf="service.form.controls['name'].errors?.minlength">Minimum lenght: 5</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input formControlName="title" matInput placeholder="Title">
             </mat-form-field>
-            <mat-raido-group formControlName="status">
-                <mat-radio-button [value]='1'>Draft</mat-radio-button>
-                <mat-radio-button [value]='2'>Active</mat-radio-button>
-                <mat-radio-button [value]='3'>Retired</mat-radio-button>
-                <mat-radio-button [value]='4'>Unknown</mat-radio-button>
-            </mat-raido-group>
             <mat-form-field>
-                <input formControlName="date" matInput placeholder="Date">
-            </mat-form-field>
-            <mat-form-field>
-                <input formControlName="effectivePeriod" matInput placeholder="EffectivePeriod">
-            </mat-form-field>
-            <mat-form-field>
-                <input formControlName="exposureBackground" matInput placeholder="ExposureBackground">
+                <mat-select formControlName="status" placeholder="Status">
+                    <ng-container *ngFor="let statusc of statuses">
+                        <mat-option value="{{statusc.id}}">{{statusc.value}}</mat-option>
+                    </ng-container>
+                </mat-select>
             </mat-form-field>
         </div>
-    </mat-grid-tile>
-    <mat-grid-tile>
-        <div class="controles-container">
-            <div class="add-bottom-padding">
-
+            <div class="controles-containter">
+            <mat-form-field>
+                <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Submit Date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker> 
+                <mat-error>Invalid date format</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="effectivePeriod" matInput [matDatepicker]="picker2" placeholder="Effective Period End Date">
+                <mat-error>Invalid date format</mat-error>
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker> 
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="exposureBackground" matInput placeholder="ExposureBackground*">
+                <mat-error *ngIf="service.form.controls['exposureBackground'].errors?.required">This field is required!</mat-error>
+                <mat-error *ngIf="service.form.controls['exposureBackground'].errors?.minlength">Minimum lenght: 3</mat-error>
+            </mat-form-field>
+            <div class="button-row">
+                <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+                <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
             </div>
         </div>
+
+    </mat-grid-tile>
+    <mat-grid-tile>
+
+        <app-evidence-list></app-evidence-list>
+
     </mat-grid-tile>
 
 </mat-grid-list>

@@ -3,8 +3,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Evidences } from './models/evidences';
 
 
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -20,7 +18,7 @@ export class AppComponent {
       console.log("mentes sikeres", res);
     }).catch(error => {
       console.log('error', error);
-    })
+    }) 
   }
 
   readData(){

@@ -1,0 +1,34 @@
+    <table mat-table [dataSource]="evidenceArray" class="mat-elevation-z8">
+        <ng-container matColumnDef="identifier">
+            <th mat-header-cell *matHeaderCellDef>Identifier</th>
+            <td mat-cell *matCellDef="let element">{{element.identifier}}</td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef>Title</th>
+            <td mat-cell *matCellDef="let element">{{element.title}}</td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">{{element.status}}</td>
+        </ng-container>
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let element">{{element.date}}</td>
+        </ng-container>
+        <ng-container matColumnDef="effectivePeriod">
+            <th mat-header-cell *matHeaderCellDef>Effective Period</th>
+            <td mat-cell *matCellDef="let element">{{element.effectivePeriod}}</td>
+        </ng-container>
+        <ng-container matColumnDef="exposureBackground">
+            <th mat-header-cell *matHeaderCellDef>Exposure Background</th>
+            <td mat-cell *matCellDef="let element">{{element.exposureBackground}}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+

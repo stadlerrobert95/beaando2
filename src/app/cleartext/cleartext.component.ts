@@ -11,5 +11,7 @@ export class CleartextComponent{
 
   @Input() placeholder = "";
   
+  @Input() formNameVariable = "";
+  
   @Input() value = '';
 }
