@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Evidences } from 'src/app/models/evidences';
+import { EvidencesSimplified } from 'src/app/models/evidences-simplified';
 import { EvidencesService } from 'src/app/shared/evidences.service';
 import { map } from 'rxjs/operators';
 
@@ -15,7 +15,7 @@ import { map } from 'rxjs/operators';
 export class EvidenceListComponent implements OnInit {
 
   constructor(private service: EvidencesService) { }
-  evidenceArray = new MatTableDataSource();
+  evidenceArray = new MatTableDataSource<EvidencesSimplified>();
 
   displayedColumns: string[] = ['identifier', 'name', 'title', 'status', 'date', 'effectivePeriod', 'exposureBackground', 'actions'];
   
@@ -29,7 +29,7 @@ export class EvidenceListComponent implements OnInit {
   .pipe(
     map(docData => { 
     return docData.map(evidence => {
-        let data = evidence.payload.doc.data() as Object;
+        let data = evidence.payload.doc.data() as EvidencesSimplified;
         return {...data, 
           date: (data as {date: any}).date.toDate(),
           effectivePeriod: (data as {date: any}).date.toDate()}

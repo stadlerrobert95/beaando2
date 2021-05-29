@@ -34,8 +34,14 @@
                 <button mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
             </td>
         </ng-container>
+        <ng-container matColumnDef="loading">
+            <tfoot mat-footer-cell *matFooterCellDef colspan="6">
+                Loading....
+            </tfoot>
+        </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':evidenceArray!=null}"></mat-footer-row>
 
     </table>
 

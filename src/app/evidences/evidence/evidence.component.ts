@@ -27,7 +27,7 @@ export class EvidenceComponent implements OnInit {
   constructor(public service: EvidencesService, private firestore:AngularFirestore, private notificationService: NotificationService){ }
 
   ngOnInit(): void {
-    this.resetForm();
+    this.onClear();
     this.service.getEvidences();
   }
 
@@ -36,15 +36,6 @@ export class EvidenceComponent implements OnInit {
     this.service.initializeFormGroup();
   }
 
-  resetForm(form?: NgForm){
-    if(form != null)
-    form.resetForm();
-    this.service.formData = {
-      resourceType: "Evidence",
-      status: "unknown",
-      exposureBackground: {}
-    }
-  }
 
   onSubmit(){
       let data = this.service.form.value;
