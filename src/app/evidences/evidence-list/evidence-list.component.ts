@@ -37,7 +37,7 @@ export class EvidenceListComponent implements OnInit {
         return {...data,
           $key: evidence.payload.doc.id,
           date: (data as {date: any}).date?.toDate(),
-        effectivePeriod: (data as {date: any}).date?.toDate()}
+          effectivePeriod: (data as {effectivePeriod: any}).effectivePeriod?.toDate()}
       }
     )
   })).subscribe(docData =>{
@@ -57,7 +57,7 @@ export class EvidenceListComponent implements OnInit {
     
     setTimeout(() => this.service.populateForm(row), 500);
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true; 
+    dialogConfig.disableClose = false; 
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     this.dialog.open(EvidenceComponent, dialogConfig);
@@ -68,7 +68,5 @@ export class EvidenceListComponent implements OnInit {
     this.service.deleteEvidence($key);
     this.notificationService.warn('Deleted sucessfully');
     }
-
-  
   }
 }
