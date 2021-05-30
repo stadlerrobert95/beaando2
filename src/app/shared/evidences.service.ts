@@ -48,8 +48,7 @@ export class EvidencesService {
   }
 
   updateEvidence(evidence: EvidencesSimplified){
-    console.log(this.firebase.collection("evidences"));
-    console.log(evidence.$key);
+
     
     
     return this.firebase.collection("evidences").doc(evidence.$key).set(evidence);

@@ -38,14 +38,13 @@ export class EvidenceComponent implements OnInit {
   }
 
   onClear(){
-    console.log("Cleared");
     this.service.initializeFormGroup();
     this.service.form.reset();
   }
 
 
   onSubmit(){
-    console.log("Submitted");
+
       let data = this.service.form.value;
       if (!this.service.form.get('$key')?.value)
         this.service.instertEvidence(this.service.form.value)

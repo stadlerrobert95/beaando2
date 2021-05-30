@@ -26,8 +26,6 @@ export class EvidenceListComponent implements OnInit {
   displayedColumns: string[] = ['identifier', 'name', 'title', 'status', 'date', 'effectivePeriod', 'exposureBackground', 'actions'];
   
   ngOnInit(): void {
-    setTimeout(()=>console.log(this.evidenceArray),2000);
-
     this.getEvidences();
   }
 
@@ -56,7 +54,6 @@ export class EvidenceListComponent implements OnInit {
   }
 
   onEdit(row:EvidencesSimplified){
-    console.log(row);
     
     setTimeout(() => this.service.populateForm(row), 500);
     const dialogConfig = new MatDialogConfig();
