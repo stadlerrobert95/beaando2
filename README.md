@@ -23,7 +23,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 Fordítási hiba: 
 <br>&nbsp;&nbsp;&nbsp;&nbsp;nincs 
 <br>Futtatási hiba: 
-<br>&nbsp;&nbsp;&nbsp;&nbsp; nincs
+<br>&nbsp;&nbsp;&nbsp;&nbsp;nincs
 <br>Firebase Hosting URL (létezik, és minden komponens megfelelő módon betöltődik): 
 <br>&nbsp;&nbsp;&nbsp;&nbsp;Coospace
 <br>Adatmodell definiálása (TypeScript interfész vagy class formájában): 
